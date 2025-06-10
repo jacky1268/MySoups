@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpg" href="img/logo.jpg">
+    <title>My Soup - About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange-primary: #f47f26;
+            --orange-dark: #e6731e;
+            --orange-light: #ff9a56;
+            --cream: #fff5eb;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Baloo 2', cursive;
+            background-color: var(--cream);
+            color: #495057;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        .bg-orange-custom {
+            background-color: var(--orange-primary);
+        }
+
+        .text-orange-custom {
+            color: var(--orange-primary);
+        }
+
+        .bg-orange-light-custom {
+            background-color: var(--orange-light);
+        }
+
+        .border-bottom-orange-light {
+            border-bottom: 3px solid var(--orange-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .navbar-brand img {
+            width: 50px;
+        }
+
+        .nav-link {
+            color: #fff !important;
+        }
+
+        .nav-link:hover {
+            color: rgb(239, 214, 141) !important;
+        }
+
+        .dropdown-menu {
+            background-color: var(--cream);
+        }
+
+        .dropdown-item {
+            color: var(--orange-dark);
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--orange-light);
+            color: white;
+        }
+
+        .section-title {
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-weight: bold;
+            color: var(--orange-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #5a6268;
+            line-height: 1.6;
+        }
+
+        .intro-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            list-style: none;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 40px;
+            width: 4px;
+            background-color: var(--orange-light);
+            border-radius: 2px;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .timeline-badge {
+            color: #fff;
+            width: 80px;
+            height: 80px;
+            font-size: 1.8rem;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0px;
+            background-color: var(--orange-primary);
+            z-index: 100;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 4px var(--cream);
+        }
+
+        .timeline-panel {
+            position: relative;
+            width: calc(100% - 100px);
+            margin-left: 100px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline-panel h5 {
+            font-weight: 600;
+        }
+
+        .why-choose-us .card {
+            border: none;
+            background-color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .why-choose-us .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-choose-us .icon-circle {
+            width: 70px;
+            height: 70px;
+            background-color: var(--orange-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            font-size: 2.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .why-choose-us .card:hover .icon-circle {
+            background-color: var(--orange-dark);
+        }
+
+        .why-choose-us .card-body {
+            padding: 1.8rem;
+        }
+
+        .why-choose-us .card-title {
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: white;
+            background-color: var(--orange-primary);
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(244, 127, 38, 0.5);
+        }
+
+        .accordion-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: .375rem !important;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .accordion-header button {
+            font-size: 1.1rem;
+        }
+
+        .cta-section {
+            border-radius: 10px;
+        }
+
+        .footer-section {
+            background-color: var(--orange-dark);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-section h5,
+        .footer-section h6 {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .footer-section .footer-link {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .footer-section .footer-link:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-section .social-icon {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1.5rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .footer-section .social-icon:hover {
+            color: #fff;
+        }
+
+        .footer-section hr {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-section .copyright-text {
+            color: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-orange-custom sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-2 d-flex align-items-center" href="index.html">
+                <img src="img/logo.jpg" alt="My Soup Logo" class="img-fluid rounded-circle me-2"> <strong>MY
+                    SOUP</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav fw-bold gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about-intro" class="py-5">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h2 class="display-4 fw-bolder text-orange-custom">Kisah Hangat di Balik Semangkuk My Soup</h2>
+                    <p class="lead section-subtitle mt-3 px-lg-5">Selamat datang di My Soup! Kami bukan hanya sekadar
+                        tempat makan, tapi sebuah cerita tentang tradisi, cinta pada kuliner Nusantara, dan komitmen
+                        untuk menyajikan kehangatan serta kualitas terbaik dalam setiap hidangan sup kami.</p>
+                </div>
+                <div class="row align-items-center g-5 mt-4">
+                    <div class="col-lg-6">
+                        <img src="img/about.jpg" alt="Suasana hangat di My Soup" class="img-fluid rounded-3 shadow-lg">
+                    </div>
+                    <div class="col-lg-6 intro-text">
+                        <h3 class="text-orange-custom fw-semibold mb-3">Dari Dapur Rumahan ke Jantung Kuliner Kota</h3>
+                        <p class="fw-semibold">My Soup lahir dari kecintaan mendalam terhadap ragam sup tradisional
+                            Nusantara. Perjalanan kami dimulai dari sebuah hobi memasak sederhana di dapur rumahan di
+                            Lubuk Baja pada tahun 2008. Berkat dukungan tak ternilai dari para pelanggan setia yang
+                            menghargai cita rasa autentik dan kesegaran bahan baku yang kami jaga, usaha kecil ini
+                            bertumbuh dan berkembang.</p>
+                        <p>Setiap resep adalah warisan keluarga, diracik dengan penuh ketelitian untuk menghadirkan
+                            kembali kenangan dan kehangatan sup rumahan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="milestones" class="py-5" style="background-color: #fff8f0;">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="text-orange-custom fw-bold section-title d-inline-block border-bottom-orange-light">Jejak
+                        Langkah & Pencapaian Kami</h2>
+                </div>
+                <ul class="timeline">
+                    <li class="timeline-item">
+                        <div class="timeline-badge"><i class="bi bi-house-heart-fill"></i></div>
+                        <div class="timeline-panel">
+                            <h5 class="text-orange-custom"><i class="bi bi-calendar-event me-2"></i>2008 - Akar My Soup
+                            </h5>
+                            <p class="fw-semibold">My Soup didirikan di Lubuk Baja sebagai usaha rumahan dengan menu
+                                utama Sup Ayam
+                                Jahe dan Soto Betawi
+                            </p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge"><i class="bi bi-shop"></i></div>
+                        <div class="timeline-panel">
+                            <h5 class="text-orange-custom"><i class="bi bi-calendar-event me-2"></i>2012 - Outlet
+                                Pertama Menyapa</h5>
+                            <p class="fw-semibold">Membuka outlet pertama di pusat kuliner Lubuk Baja dengan 10 varian
+                                menu sup</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge"><i class="bi bi-building-add"></i></div>
+                        <div class="timeline-panel">
+                            <h5 class="text-orange-custom"><i class="bi bi-calendar-event me-2"></i>2024 - Inovasi &
+                                Ekspansi</h5>
+                            <p class="fw-semibold">Ekspansi pertama dengan membuka cabang baru di Mitra Raya dengan
+                                konsep modern
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="why-us" class="py-5 why-choose-us">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="text-orange-custom fw-bold section-title d-inline-block border-bottom-orange-light">
+                        Komitmen Kami Untuk Anda</h2>
+                    <p class="lead section-subtitle mt-3 px-lg-5">Lebih dari sekadar sup, inilah nilai-nilai yang kami
+                        junjung tinggi dalam setiap mangkuk yang kami sajikan.</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-4 d-flex">
+                        <div class="card p-3">
+                            <div class="icon-circle"><i class="bi bi-egg-fried"></i></div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Cita Rasa Autentik Nusantara</h5>
+                                <p class="card-text fw-semibold small">Sup khas Indonesia dengan resep lokal,
+                                    menjaga
+                                    keaslian rasa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 d-flex">
+                        <div class="card p-3">
+                            <div class="icon-circle"><i class="bi bi-check-circle-fill"></i></div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Bahan Segar & Berkualitas</h5>
+                                <p class="card-text fw-semibold small">Bahan pilihan segar setiap hari untuk menjamin
+                                    kebersihan, gizi, dan rasa terbaik.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 d-flex">
+                        <div class="card p-3">
+                            <div class="icon-circle"><i class="bi bi-gem"></i></div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Harga Jujur, Kualitas Unggul</h5>
+                                <p class="card-text fw-semibold small">Menyajikan makanan lezat dan berkualitas tanpa
+                                    memberatkan kantong Anda.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 d-flex">
+                        <div class="card p-3">
+                            <div class="icon-circle"><i class="bi bi-lightbulb-fill"></i></div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Inovatif Namun Tradisional</h5>
+                                <p class="card-text fw-semibold small">Terus berinovasi dengan varian baru, namun selalu
+                                    berakar pada nostalgia rasa asli Indonesia.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 d-flex">
+                        <div class="card p-3">
+                            <div class="icon-circle"><i class="bi bi-heart-fill"></i></div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Mendukung Ekonomi Lokal</h5>
+                                <p class="card-text fw-semibold small">Turut serta dalam pertumbuhan UMKM dan
+                                    pemberdayaan masyarakat sekitar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center bg-orange-light-custom cta-section">
+            <div class="container">
+                <h2 class="fw-bolder text-white mb-3">Penasaran dengan Kelezatan My Soup?</h2>
+                <p class="lead text-white mb-4 px-lg-5">Setiap suapan adalah undangan untuk merasakan kehangatan dan
+                    tradisi. Jelajahi ragam menu autentik kami yang dibuat dari hati dengan bahan-bahan segar pilihan.
+                </p>
+                <a href="menu.html?filter=all" class="btn btn-lg shadow-sm"
+                    style="background-color: var(--orange-primary); color:white;">
+                    <i class="bi bi-journals me-2"></i>Lihat Semua Menu Kami
+                </a>
+                <a href="contact.html" class="btn btn-outline-light btn-lg ms-md-3 mt-3 mt-md-0 shadow-sm">
+                    <i class="bi bi-pin-map-fill me-2"></i>Temukan Outlet Terdekat
+                </a>
+            </div>
+        </section>
+
+        <section id="faq" class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="text-orange-custom fw-bold section-title d-inline-block border-bottom-orange-light">Yang
+                        Sering Ditanyakan (FAQ)</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="accordion" id="faqMySoup">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed fw-bold" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                        aria-controls="collapseOne">
+                                        Apa saja menu sup andalan di My Soup?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#faqMySoup">
+                                    <div class="accordion-body fw-semibold">
+                                        Menu andalan kami adalah Sop Ayam dan Soto Medan. Kami juga memiliki
+                                        berbagai varian sup lainnya yang tak kalah lezat!
+                                        Anda bisa melihat semua menu kami di halaman <a href="menu.html?filter=all"
+                                            class="text-orange-custom fw-bold">Menu</a>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed fw-bold" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        Apakah My Soup menggunakan bahan-bahan segar?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#faqMySoup">
+                                    <div class="accordion-body fw-semibold">
+                                        Ya, kami sangat berkomitmen untuk menggunakan bahan-bahan pilihan yang segar
+                                        setiap harinya. Kualitas dan kesegaran bahan adalah prioritas kami untuk
+                                        menjamin cita rasa dan gizi terbaik bagi pelanggan.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed fw-bold" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Di mana saja lokasi outlet My Soup?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#faqMySoup">
+                                    <div class="accordion-body fw-semibold">
+                                        Saat ini kami memiliki outlet di pusat kuliner Lubuk Baja dan cabang baru kami
+                                        di Mitra Raya. Untuk informasi lebih detail mengenai alamat,
+                                        silakan kunjungi halaman <a href="contact.html"
+                                            class="text-orange-custom fw-bold">Contact</a>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed fw-bold" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                        Apakah My Soup menerima pesanan untuk acara?
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                    data-bs-parent="#faqMySoup">
+                                    <div class="accordion-body fw-semibold">
+                                        Tentu saja! Kami menerima pesanan untuk berbagai acara. Silakan hubungi kami
+                                        melalui kontak yang tertera di
+                                        halaman <a href="contact.html" class="text-orange-custom fw-bold">Contact
+                                        </a> untuk diskusi lebih lanjut mengenai kebutuhan Anda.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section pt-5 pb-4 mt-auto">
+        <div class="container text-center text-md-start">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-3">
+                        <img src="img/logo.jpg" alt="My Soup Logo" style="width: 50px; height: 50px;"
+                            class="rounded-circle me-2">
+                        <h5 class="mb-0">MY SOUP</h5>
+                    </div>
+                    <p class="small">"Kehangatan di setiap suapan, sup alami dari dapur kami."</p>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase mb-3">Navigation</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-1"><a href="index.html" class="footer-link">Home</a></li>
+                        <li class="mb-1"><a href="menu.html?filter=all" class="footer-link">Menu</a></li>
+                        <li class="mb-1"><a href="about.html" class="footer-link">About Us</a></li>
+                        <li class="mb-1"><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase mb-3">Contact Us</h6>
+                    <p class="small"><i class="bi bi-geo-alt-fill me-2"></i>Ruko Taman Kota Baloi Blok E No.11</p>
+                    <p class="small"><i class="bi bi-telephone-fill me-2"></i>+62 838 7419
+                        7190</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-uppercase mb-3">Follow Social Media</h6>
+                    <div class="d-flex justify-content-center justify-content-md-start">
+                        <a href="https://www.facebook.com/profile.php?id=61551788289966&mibextid=LQQJ4d" target="_blank"
+                            class="social-icon me-3"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0 small copyright-text">&copy; 2025 My Soup. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
